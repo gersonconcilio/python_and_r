@@ -1,0 +1,75 @@
+```{r}
+
+setwd("/home/gconcilio/Documents/Programação/Curso Data Science/python_and_r/3_R_Tratamento_Dados")
+
+```
+
+carregando e vendo os dados 
+```{r}
+
+dados <- read.csv("tempo.csv", sep = ";", na.strings = "", stringsAsFactor = T)
+dados
+
+```
+
+Tratando Dados Aparência
+```{r}
+
+summary(dados$Aparencia)
+
+dados[!dados$Aparencia %in% c("chuva", "nublado", "sol"), ]$Aparencia <- "sol"
+dados
+
+dados$Aparencia <- factor(dados$Aparencia)
+summary(dados$Aparencia)
+
+```
+
+Tratando Dados Temperatura
+```{r}
+
+mediana_temp <- median(dados$Temperatura)
+mediana_temp 
+
+dados[dados$Temperatura <= -130 | dados$Temperatura >= 130, ]$Temperatura <- mediana_temp
+
+dados
+
+```
+
+Tratando Dados Umidade
+```{r}
+
+mediana_umi <- median(dados$Umidade, na.rm = T)
+mediana_umi
+
+dados[dados$Umidade <= 0 | dados$Umidade >= 100 | is.na(dados$Umidade), ]$Umidade <- mediana_umi
+
+dados
+
+```
+
+Tratando Dados Vento
+```{r}
+
+unique(dados$Vento)
+summary(dados$Vento)
+
+dados[is.na(dados$Vento), ]$Vento <- "FALSO"
+dados$Vento <- factor(dados$Vento)
+summary(dados$Vento)
+dados
+
+```
+
+Tratando Dados Jogar
+```{r}
+
+unique(dados$Jogar)
+summary(dados$Jogar)
+
+dados[!dados$Jogar %in% c("sim", "nao"), ]$Jogar
+
+dados
+
+```
