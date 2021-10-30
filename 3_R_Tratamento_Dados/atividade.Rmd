@@ -9,6 +9,8 @@ carregando e vendo os dados
 
 dados <- read.csv("tempo.csv", sep = ";", na.strings = "", stringsAsFactor = T)
 dados
+head(dados)
+summary(dados)
 
 ```
 
