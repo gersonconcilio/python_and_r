@@ -1,0 +1,53 @@
+```{r}
+head(trees)
+```
+
+HISTOGRAMA
+```{r}
+hist(trees$Height)
+hist(trees$Height, main = "Arvores", ylab = "Frequência", xlab = "Altura", col = "blue")
+hist(trees$Height, main = "Arvores", ylab = "Frequência", xlab = "Altura", col = "blue",
+density = 30, breaks = 20)
+```
+
+DENSIDADE
+```{r}
+plot(density(trees$Height))
+```
+
+DENSIDADE SOBRE O HISTOGRAMA, PARÂMETRO PAR
+```{r}
+densidade = density((trees$Height))
+hist(trees$Height, main = NULL, xlab = NULL, ylab = NULL)
+par(new = TRUE)
+plot(densidade, main = "Arvores")
+```
+
+DISPERSÃO
+```{r}
+plot(trees$Girth, trees$Volume)
+plot(trees$Girth, trees$Volume, main = "Arvores")
+plot(trees$Girth, trees$Volume, main = "Árvores", xlab = "Volume", ylab = "Circunferencia",
+col = "red", )
+plot(trees$Girth, trees$Volume, main = "Árvores", xlab = "Volume", ylab = "Circunferencia", 
+col = "blue", pch = 20)
+```
+
+MUDANDO O TIPO DE PCH
+```{r}
+plot(trees$Girth, trees$Volume, main = "Árvores", xlab = "Volume", ylab = "Circunferencia",
+col = "grey", pch = "20", type = "l")
+```
+
+JITTER, DIMINUINDO SOBREPOSIÇÃO 
+```{r}
+plot(jitter(trees$Girth), trees$Volume, main = "Árvores", xlab = "Volume", ylab = "Circunferencia",
+col = "blue")
+```
+
+LEGENDA COM DIMENSÃO CATEGÓRICA
+```{r}
+CO2
+plot(CO2$conc, CO2$uptake, pch = 20, col = CO2$Treatment)
+legend("bottomright", legend = c("nonchilled", "chilled"), cex = 1, fill = c("black", "red"))
+```
