@@ -1,0 +1,27 @@
+```{r}
+library(stargazer)
+```
+
+
+FORMATO LATEX
+```{r}
+stargazer(iris, summary = FALSE)
+```
+
+
+FORMATO HTML
+```{r}
+stargazer(iris, type = "html")
+```
+
+
+FORMATO TEXTO
+```{r}
+stargazer(iris, type = "text")
+```
+
+
+SALVA EM DISCO
+```{r}
+stargazer(women, out = "women.tex", summary = FALSE)
+```

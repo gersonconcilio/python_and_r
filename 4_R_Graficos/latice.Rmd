@@ -1,0 +1,75 @@
+```{r}
+library(lattice)
+```
+
+
+LATTICE.BOXPLOT
+```{r}
+bwplot(trees$Volume, main = "Árvores", xlab = "Volume")
+```
+
+
+LATTICE.HISTOGRAM
+ASPECT -> PROPORÇÃO
+NINT -> NÚMERO DE QUEBRAS
+TYPE -> percent, COUNT,
+```{r}
+histogram(trees$Volume, main = "Árvores", xlab = "Volume", aspect = 1, type = "percent", nint = 20)
+```
+
+
+LATTICE.HISTOGRAM CONDICIONAL
+```{r}
+chickwts
+histogram(chickwts$weight)
+aggregate(chickwts$weight, by = list(chickwts$feed), FUN = sum)
+histogram(~weight | feed, data = chickwts)
+```
+
+
+LATTICE.DENSIDADE CONDICIONAL
+```{r}
+densityplot(CO2$conc)
+densityplot(CO2$conc, plot.points = FALSE)
+densityplot(~CO2$conc | CO2$Treatment, plot.points = FALSE)
+```
+
+
+GRÁFICO DE DISPERSÃO CONDICIONAL
+CO2, seis plantas em dois locais, refrigeradas ou não durante a noite
+```{r}
+CO2
+xyplot(CO2$conc ~ CO2$uptake)
+xyplot(CO2$conc ~ CO2$uptake | CO2$Type)
+xyplot(CO2$conc ~ CO2$uptake | CO2$Treatment)
+```
+
+
+agegp: idade; alcgp: alcool; tobgp: tabaco;
+```{r}
+esoph
+dotplot(esoph$alcgp ~ esoph$ncontrols)
+dotplot(esoph$alcgp ~ esoph$ncontrols | esoph$tobgp)
+```
+
+
+MATRIZ DE DISPERSÃO
+```{r}
+splom(~CO2[4:5] | CO2$Type, CO2)
+```
+
+
+LATTICE.GRAFICOS 3D
+```{r}
+OrchardSprays
+cloud(decrease ~ rowpos * colpos, data = OrchardSprays)
+cloud(decrease ~ rowpos * colpos, groups = treatment, data = OrchardSprays)
+```
+
+
+LEVEL PLOT 
+Circunferencia, Largura e Altura das Árvores
+```{r}
+trees
+levelplot(Girth ~ Height * Volume, data = trees)
+```
